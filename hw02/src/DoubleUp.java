@@ -5,7 +5,14 @@ public class DoubleUp {
      */
     public static String doubleUp(String s) {
         // TODO: Fill in this function
-        return null;
+        String double_string = "";
+        for (int i = 0; i < s.length();i++) {
+            char c = s.charAt(i);
+            double_string += c;
+            double_string += c;
+        }
+
+        return double_string;
     }
 
     void main() {
