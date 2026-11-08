@@ -26,26 +26,34 @@ package syntaxexercises;
  */
 public class Cat {
     // TODO: Declare the fields name and weight.
+    public String name;
+    public int weight;
 
     public Cat(String name, int weight) {
         // TODO: Store name and weight in the fields you declared.
+        this.name = name;
+        this.weight = weight;
     }
 
     /** Returns true if this cat weighs more than other. */
     public boolean isHeavierThan(Cat other) {
         // TODO
-        return false;
+        return this.weight > other.weight;
     }
 
     /** Returns the combined weight of c1 and c2. */
     public static int totalWeight(Cat c1, Cat c2) {
         // TODO
-        return 0;
+        return c1.weight + c2.weight;
     }
 
     /** Creates a cat named Mochi and a cat named Tofu, then prints the results of the same
      *  two calls as in the Python code above. (Java prints true, not True.) */
     public static void main() {
         // TODO
+        Cat c1 = new Cat("Mochi", 12);
+        Cat c2 = new Cat("Tofu", 9);
+        System.out.println(c1.isHeavierThan(c2));
+        System.out.println(Cat.totalWeight(c1,c2));
     }
 }
