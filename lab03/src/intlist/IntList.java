@@ -12,20 +12,41 @@ public class IntList {
     /** Replaces all instances of a with b in L.
      *  Modifies the passed list. Iterative (no recursion allowed). */
     public static void replaceID(IntList L, int a, int b) {
-        // TODO: Fill in this method (destructive, iterative)
+        // TODO: Fill in this method (destructive, iterative)L;
+        while (L != null) {
+            if (L.first == a) {
+                L.first = b;
+            }
+            L = L.rest;
+        }
     }
 
     /** Returns a copy of L, but with all instances of a replaced by b.
      *  Does not modify the passed list. Recursive. */
     public static IntList replaceRND(IntList L, int a, int b) {
         // TODO: Fill in this method (non-destructive, recursive)
-        return null;
+        if (L == null) {
+            return null;
+        }
+        IntList copyNode = new IntList(L.first, null);
+        if (copyNode.first == a) {
+            copyNode.first = b;
+        }
+        copyNode.rest = replaceRND(L.rest,a,b);
+        return copyNode;
     }
 
     /** Replaces all instances of a with b in L.
      *  Modifies the passed list. Recursive. */
     public static void replaceRD(IntList L, int a, int b) {
         // TODO: Fill in this method (destructive, recursive)
+        if (L == null) {
+            return;
+        }
+        if (L.first == a) {
+            L.first = b;
+        }
+        replaceRD(L.rest,a,b);
     }
 
     /** Adds nodes to this list so that the resulting sequence is a stair,
@@ -35,6 +56,21 @@ public class IntList {
      *  Example: [2, 5, 3].stairify() results in [2, 3, 4, 5, 4, 3]. */
     public IntList stairify() {
         // TODO: Fill in this method (extra, exam-level practice)
+        IntList p = this;
+        while (p.rest != null) {
+            if (p.first-p.rest.first > 1) {
+                while (p.first-p.rest.first > 1){
+                    p.rest = new IntList(p.first-1,p.rest);
+                    p = p.rest;
+                }
+            } else if (p.first-p.rest.first < -1) {
+                while (p.first-p.rest.first < -1){
+                    p.rest = new IntList(p.first+1,p.rest);
+                    p = p.rest;
+                }
+            }
+            p = p.rest;
+        }
         return this;
     }
 
