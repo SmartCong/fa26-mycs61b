@@ -5,6 +5,16 @@ public class StarTriangle5 {
      */
     public static void starTriangle5() {
         // TODO: Fill in this function
+        for (int row = 0; row < 5; row++) {
+            for (int col = 0; col < 5; col++) {
+                if (col > 3 - row) {
+                    IO.print("*");
+                } else {
+                    IO.print(" ");
+                }
+            }
+            IO.println();
+        }
     }
 
     void main() {
